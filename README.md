@@ -4,17 +4,23 @@ A portable agent skill for converting local files to Markdown with [Microsoft Ma
 
 ## Install
 
-1. Install Python 3.10–3.14 and the official converter in your preferred Python environment:
+Install the skill globally for Codex with the [Skills CLI](https://www.skills.sh/docs/cli):
 
-   ```bash
-   python -m pip install "markitdown[all]"
-   ```
+```bash
+npx skills add https://github.com/xiaojiangxiaojin-prog/markitdown-skill -g -a codex -s markitdown -y
+```
 
-   The `all` extra enables optional format dependencies. For fewer dependencies, install only the extras you need, as described in the [upstream README](https://github.com/microsoft/markitdown#installation).
+For another supported agent, replace `codex` with that agent's name, or omit `-a codex` to let the CLI detect it. You can also manually copy [`SKILL.md`](SKILL.md) into the agent's global skills directory as `markitdown/SKILL.md` (Codex: `~/.codex/skills/markitdown/SKILL.md`; Windows: `%USERPROFILE%\.codex\skills\markitdown\SKILL.md`).
 
-2. Place this repository's [`SKILL.md`](SKILL.md) in your agent's global skills directory as `markitdown/SKILL.md`. For Codex, the destination is `~/.codex/skills/markitdown/SKILL.md` (Windows: `%USERPROFILE%\.codex\skills\markitdown\SKILL.md`). Other agents that support the Agent Skills format can use the same file in their documented skills directory.
+The skill contains instructions only. To run conversions, also install Python 3.10–3.14 and the official converter in your preferred Python environment:
 
-3. Start a new agent session and ask it to use `markitdown` on a local file. Agents without skill discovery can read `SKILL.md` directly or reference it from their own instruction file.
+```bash
+python -m pip install "markitdown[all]"
+```
+
+The `all` extra enables optional format dependencies. For fewer dependencies, install only the extras you need, as described in the [upstream README](https://github.com/microsoft/markitdown#installation).
+
+Start a new agent session and ask it to use `markitdown` on a local file. Agents without skill discovery can read `SKILL.md` directly or reference it from their own instruction file.
 
 ## Use
 
